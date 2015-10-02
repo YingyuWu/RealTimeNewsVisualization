@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<title>Story Telling Visualization Test</title>
+		<script src="lib/d3.v3.js"></script>
+		<script src="lib/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript">
+
+			var wsUri = "ws://127.0.0.1:2014";
+			var websocket = null;
+			var data = null;
+
+			var pause = false;
+
+			function initWebsocket()
+			{
+				try
+				{
+					if ( typeof MozWebSocket == 'function' )
+						WebSocket = MozWebSocket;
+					if ( websocket && websocket.readyState == 1 )
+						websocket.close();
+					websocket = new WebSocket( wsUri );
+					websocket.onopen = function( evt ) {
+						console.log( "CONNECTED" );
+						d3.select("#websocket_status").text("Connection Status : "+ checkSocket());
+					};
+					websocket.onclose = function( evt ) {
+						console.log( "DISCONNECTED" );
+						d3.select("#websocket_status").text("Connection Status : "+ checkSocket());
+					};
+					websocket.onmessage = function( evt ) {
+						//console.log( evt.data );
+						d3.select("#websocket_status").text("Connection Status : "+ checkSocket());
+						data = JSON.parse(evt.data)
+						var clusterData = data.cluster;
+						var timeData = data.datetime;
+						if (clusterData != null){
+							generateAndUpdateStoryTellingVisualization(clusterData, 0, 960, 720, 20, 20);
+						}
+
+						if (timeData != null){
+							var datestring = "Current Date : "+timeData[0]+'/'+timeData[1]+'/'+timeData[2]+' '+timeData[3]+":"+timeData[4]+":"+timeData[5];
+							d3.select("#date_time").text(datestring);
+						}
+
+					};
+					websocket.onerror = function( evt ) {
+						d3.select("#websocket_status").text("Connection Status : "+ checkSocket());
+						console.log( 'ERROR: ' + evt.data );
+					};
+				}
+				catch( exception )
+				{
+					d3.select("#websocket_status").text("Connection Status : "+ checkSocket());
+					console.log( 'ERROR: ' + exception );
+				}
+			}
+
+			function stopWebsocket()
+			{
+				if ( websocket )
+					websocket.close();
+			}
+
+			function checkSocket()
+			{
+				if ( websocket != null )
+				{
+					var stateStr;
+					switch ( websocket.readyState )
+					{
+						case 0:
+							stateStr = "CONNECTING";
+							break;
+						case 1:
+							stateStr = "OPEN";
+							break;
+						case 2:
+							stateStr = "CLOSING";
+							break;
+						case 3:
+							stateStr = "CLOSED";
+							break;
+						default:
+							stateStr = "UNKNOW";
+							break;
+					}
+					return stateStr;
+				}
+				else
+				{
+					return "Websocket is null";
+				}
+			}
+
+			function pauseOrContinue()
+			{
+				var name = d3.select("#pause_continue").text();
+				if (name == "Continue"){
+					d3.select("#pause_continue").text("Pause");
+					pause = false;
+					websocket.send("control:continue");
+				}else if (name == "Pause"){
+					d3.select("#pause_continue").text("Continue");
+					pause = true;
+					websocket.send("control:pause");
+				}
+			}
+
+			function clusterParameterChange()
+			{
+				console.log(d3.select("#cluster_parameter")[0][0].value);
+				websocket.send("clusterparameter:"+d3.select("#cluster_parameter")[0][0].value);
+			}
+		</script>
+	</head>
+	<body>
+		<h1 id="Titles_1">STV Web Visualization beta version 1.0</h1>
+		<div>
+		<button id="websocket_status" style="float:left" disabled>Connection Status : UNKNOW</button>
+		<button id="pause_continue" onClick="pauseOrContinue();">Continue</button>
+		</div>
+		<div>
+		<button id="date_time" disabled>Current Date : UnKnown</button>
+		<div>
+		<input id="cluster_parameter"type="range" min=10 max=100 value=50 step=5 style="width:200" onchange="clusterParameterChange()">
+	</body>
+	<script type="text/javascript">
+		initWebsocket();
+
+		function generateAndUpdateStoryTellingVisualization(newdata, charID, width, height, left, top)
+		{
+			var div = null;
+
+			if (d3.selectAll("#StoryTellingVisualization-"+charID.toString())[0].length == 0){
+				div = d3.select("body")
+					.append("div")
+					.attr("id", "StoryTellingVisualization-"+charID.toString())
+					.attr("class", "StoryTellingVisualization")[0][0];
+				div.__g = d3.select(div)
+				    .append("svg")
+				    .attr("width", width)
+				    .attr("height", height)
+				    .append("g")
+				    .attr("transform", "translate("+left+","+top+")")
+
+				div.__width = width;
+				div.__height = height;
+				div.__id = charID;
+				div.__data = newdata;
+
+				div.__radius = d3.scale.linear().range([20, 350]).domain([0, 0.6]).clamp(true);
+				div.__x = d3.scale.linear().range([0, width-2*left]).domain([0, 0.7]).clamp(true);
+				div.__y = d3.scale.linear().range([height-2*top, 0]).domain([0, 0.7]).clamp(true);
+				div.__color = d3.scale.category10();
+
+				var clusters = div.__g.selectAll(".cluster_circle").data(newdata);
+				var newClusters = clusters.enter().append("g")
+				.attr("class", "cluster_circle")
+				.attr("transform", function(d) { return "translate(" + div.__x(d.position[0]) + "," + div.__y(d.position[1]) + ")"; });
+
+				newClusters.each(function(d, i){
+					var selection = d3.select(this);
+					selection.append("circle")
+					.style("fill", function(d){
+						return div.__color(d.id);})
+					.style("fill-opacity", 0.7)
+					.attr("r", function(d){
+						return div.__radius(d.size);
+					})
+					.append("svg:title")
+					.text(function(d, i) {
+						var result = "";
+						for (var k=0; k<d.keywords.length; ++k){
+							result += d.keywords[k] + "#"
+						} 
+						return result; });
+
+					selection.append("text")
+					.attr("class", "headline")
+					.attr("dy", ".35em")
+					.attr("text-anchor", "middle")
+					.style("font-size", "12px")
+					.text(function(d, i){ return d.headline;});
+				})
+
+				clusters.exit().remove();	
+			}
+			else {
+				div = d3.selectAll("#StoryTellingVisualization-"+charID.toString())[0][0];
+				div.__data = newdata;
+
+				var clusters = div.__g.selectAll(".cluster_circle").data(newdata)
+				var newClusters = clusters.enter().append("g")
+				.attr("class", "cluster_circle")
+				.attr("transform", function(d) { return "translate(" + div.__x(d.position[0]) + "," + div.__y(d.position[1]) + ")"; });
+
+				clusters.exit().remove();
+
+				newClusters.each(function(d, i){
+					var selection = d3.select(this);
+					selection.append("circle")
+					.style("fill", function(d, i){
+						return div.__color(d.id);})
+					.style("fill-opacity", 0.7)
+					.attr("r", function(d, i){
+						return div.__radius(d.size);
+					})	
+					.append("svg:title")
+					.text(function(d, i) {
+						var result = "";
+						for (var k=0; k<d.keywords.length; ++k){
+							result += d.keywords[k] + "#"
+						} 
+						return result; });
+
+					selection.append("text")
+					.attr("class", "headline")
+					.attr("dy", ".35em")
+					.attr("text-anchor", "middle")
+					.style("font-size", "12px")
+					.text(function(d, i){ return d.headline;});
+				})
+
+				
+				clusters.each(function(d, i){
+					var selection = d3.select(this);
+
+					selection
+					.transition().duration(1000)
+					.attr("transform", function(d) { return "translate(" + div.__x(d.position[0]) + "," + div.__y(d.position[1]) + ")"; });
+
+					selection.selectAll("circle").datum(d)
+					.transition().duration(1000)
+					.attr("r", function(d, i){
+						return div.__radius(d.size);
+					})
+					.style("fill", function(d, i){
+					return div.__color(d.id);})
+					selection.selectAll("text").datum(d)
+					.text(function(d, i){ 
+						return d.headline;});
+
+					selection.select("title")
+					.text(function(d, i) {
+						var result = "";
+						for (var k=0; k<d.keywords.length; ++k){
+							result += d.keywords[k] + "#"
+						} 
+						return result; });
+				})
+			}			
+		}
+	</script>
+</html>

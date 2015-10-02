@@ -1,0 +1,30 @@
+﻿Build started 9/26/2015 6:12:41 PM.
+     1>Project "C:\Users\ywu\Desktop\STVS\ServerProject\json\json.vcxproj" on node 3 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D JSON_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt ..\..\src\json\Json.cpp
+         Json.cpp
+     1>c:\users\ywu\desktop\stvs\src\json\Json.h(147): warning C4251: 'JSONVALUE::order' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'JSONVALUE'
+                 with
+                 [
+                     _Ty=wstring
+                 ]
+     1>c:\users\ywu\desktop\stvs\src\json\Json.h(266): warning C4251: 'JSONVALUE::m_stage' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'JSONVALUE'
+                 with
+                 [
+                     _Ty=JSONSCOPES
+                 ]
+     1>..\..\src\json\Json.cpp(1917): warning C4172: returning address of local variable or temporary
+     1>..\..\src\json\Json.cpp(2121): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2132): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2137): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2140): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2166): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+       Link:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.lib" /MACHINE:X64 /DLL x64\Debug\Json.obj
+            Creating library C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.lib and object C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.exp
+         json.vcxproj -> C:\Users\ywu\Desktop\STVS\ServerProject\\..\dll\json.dll
+     1>Done Building Project "C:\Users\ywu\Desktop\STVS\ServerProject\json\json.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.88

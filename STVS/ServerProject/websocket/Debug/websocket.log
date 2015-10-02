@@ -1,0 +1,52 @@
+﻿Build started 9/26/2015 6:14:26 PM.
+     1>Project "C:\Users\ywu\Desktop\STVS\ServerProject\websocket\websocket.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D WEBSOCKET_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\src\websocket\base64.cpp ..\..\src\websocket\sha1.cpp ..\..\src\websocket\websocketserver.cpp
+         websocketserver.cpp
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.h(68): warning C4251: 'websocketserver::m_ip' : class 'std::basic_string<_Elem,_Traits,_Alloc>' needs to have dll-interface to be used by clients of class 'websocketserver'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Alloc=std::allocator<char>
+                 ]
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.h(73): warning C4251: 'websocketserver::m_message' : class 'std::basic_string<_Elem,_Traits,_Alloc>' needs to have dll-interface to be used by clients of class 'websocketserver'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Alloc=std::allocator<char>
+                 ]
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(68): warning C4800: 'BOOL' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(95): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(118): warning C4309: '=' : truncation of constant value
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(148): warning C4800: 'BOOL' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(175): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(199): warning C4309: '=' : truncation of constant value
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(412): warning C4244: '=' : conversion from 'unsigned __int64' to 'int', possible loss of data
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(475): warning C4309: '=' : truncation of constant value
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(482): warning C4309: '=' : truncation of constant value
+     1>c:\users\ywu\desktop\stvs\src\websocket\websocketserver.cpp(492): warning C4309: '=' : truncation of constant value
+         sha1.cpp
+         base64.cpp
+         Generating Code...
+       Link:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.lib" /MACHINE:X86 /SAFESEH /DLL Debug\base64.obj
+         Debug\sha1.obj
+         Debug\websocketserver.obj
+     1>base64.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.lib and object C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.exp
+         websocket.vcxproj -> C:\Users\ywu\Desktop\STVS\ServerProject\Debug\websocketserver.dll
+       PostBuildEvent:
+         copy "C:\Users\hxiaoke\Dropbox\Research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\Debug\websocketserver.dll" "C:\Users\hxiaoke\Dropbox\Research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\lib"
+         :VCEnd
+         The system cannot find the path specified.
+     1>C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppCommon.targets(134,5): error MSB3073: The command "copy "C:\Users\hxiaoke\Dropbox\Research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\Debug\websocketserver.dll" "C:\Users\hxiaoke\Dropbox\Research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\lib"
+C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppCommon.targets(134,5): error MSB3073: :VCEnd" exited with code 1.
+     1>Done Building Project "C:\Users\ywu\Desktop\STVS\ServerProject\websocket\websocket.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.98

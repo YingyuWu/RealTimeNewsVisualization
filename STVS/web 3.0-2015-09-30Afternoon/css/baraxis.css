@@ -1,0 +1,9 @@
+.baraxis text{
+	font: 10px sans-self;
+}
+.baraxis path,
+.baraxis line{
+	fill:none;
+	stroke:#000;
+	shape-rendering:crispEdges;
+}

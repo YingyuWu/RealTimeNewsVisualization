@@ -1,0 +1,32 @@
+﻿Build started 2/5/2015 7:42:42 PM.
+     1>Project "C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\json\json.vcxproj" on node 3 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D JSON_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc110.pdb" /Gd /TP /errorReport:prompt ..\..\src\json\Json.cpp
+         Json.cpp
+     1>c:\users\xiaoke\dropbox\research\20131205 storytellingvisualization\program\storytellingvisualizationserver\src\json\Json.h(147): warning C4251: 'JSONVALUE::order' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'JSONVALUE'
+                 with
+                 [
+                     _Ty=wstring
+                 ]
+     1>c:\users\xiaoke\dropbox\research\20131205 storytellingvisualization\program\storytellingvisualizationserver\src\json\Json.h(266): warning C4251: 'JSONVALUE::m_stage' : class 'std::vector<_Ty>' needs to have dll-interface to be used by clients of class 'JSONVALUE'
+                 with
+                 [
+                     _Ty=JSONSCOPES
+                 ]
+     1>..\..\src\json\Json.cpp(1917): warning C4172: returning address of local variable or temporary
+     1>..\..\src\json\Json.cpp(2121): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2132): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2137): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2140): warning C4267: '=' : conversion from 'size_t' to 'DWORD', possible loss of data
+     1>..\..\src\json\Json.cpp(2166): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.lib" /MACHINE:X64 /DLL x64\Release\Json.obj
+            Creating library C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.lib and object C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.exp
+         Generating code
+         Finished generating code
+         json.vcxproj -> C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\\..\dll\json.dll
+     1>Done Building Project "C:\Users\xiaoke\Dropbox\research\20131205 StoryTellingVisualization\Program\StoryTellingVisualizationServer\ServerProject\json\json.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.50

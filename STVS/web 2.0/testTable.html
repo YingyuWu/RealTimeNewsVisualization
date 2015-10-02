@@ -1,0 +1,210 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+  <style type="text/css">
+  td {
+    //height:100px;
+    //max-width: 200px;
+    //word-wrap: break-word;
+    //  display: block;
+    //overflow: hidden;
+}
+  </style>
+  <script>
+      var giCount = 0;
+    function fnClickAddRow() {
+        $('#example1').dataTable().fnAddData( [[
+            giCount+".1",
+            giCount+".2",
+            giCount+".3",
+            giCount+".4" ], [
+            giCount+".6",
+            giCount+".7",
+            giCount+".8",
+            giCount+".9" ]] );
+         
+        giCount++;
+    }
+  </script>
+</head>
+
+<body>
+<button onclick="fnClickAddRow()">Click me</button>
+<div id="test1" style=" width:700px; height:300px">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example1" width="100%">
+    <thead>
+        <tr>
+            <th width="10%">Browser</th>
+            <th width="5%">Rendering engine</th>
+            <th width="50%">Platform(s)</th>
+            <th width="20%">Engine version</th>
+            
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Browser</th>
+            <th>Rendering engine</th>
+            <th>Platform(s)</th>
+            <th>Engine version</th>           
+        </tr>
+    </tfoot>
+</table>
+</div>
+<div id="test2" style=" width:700px; height:700px">
+  <table id="example2" >
+    <thead>
+        <tr>
+            <th width="20%">X</th>
+            <th width="5%"></th>
+            <th width="70%">B</th>
+            <th width="0%">C</th>
+            <th width="0%">D</th>
+            
+        </tr>
+    </thead>
+    <!--tfoot>
+        <tr>
+            <th>X</th>
+            <th></th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>           
+        </tr>
+    </tfoot-->
+  </table>
+</div>
+</body>
+  <script src="lib/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="lib/d3.v3.js"></script>
+  <script type="text/javascript" charset="utf8" src="lib/jquery.dataTables.min.js"></script>
+  <script>
+  //$('#test1').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example1"></table>' );
+  $(document).ready(function() {
+    $('#example1').dataTable( {
+        //"sScrollY": "100%",
+        //"sScrollX": "100%",
+        "bPaginate": false,
+        "bScrollCollapse": true,
+        "sScrollY": "400px",   
+        "bJQueryUI": true,
+        "fnDrawCallback": function() { 
+            //console.log("drawCallback");
+        },
+        "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+            /* Append the grade to the default row class name */
+            //console.log(nRow + " " + aData + " " + iDisplayIndex);
+        },
+        "aaData": [[1,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",3,4],[1,32,3,4],[2,5,6,2],[1,2,3,4],[1,21,32,4]]
+    } ); 
+
+
+
+    var oTable = $('#example2').dataTable( {
+        "sScrollY": "100%",
+        //"sScrollX": "100%",
+        "sScrollXInner": "110%",
+        "bPaginate": false,
+        "bScrollCollapse": true,
+        "fnDrawCallback": function() { 
+            //console.log("drawCallback");
+        },
+        "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+            /* Append the grade to the default row class name */
+            //console.log(nRow + " " + aData + " " + iDisplayIndex);
+            /*if (aData[2] < 3)
+                $(nRow).css('background', 'red')
+            else if (aData[2] < 14)
+                $(nRow).css('background', 'blue')
+            else if (aData[2] > 14)
+                $(nRow).css('background', 'green')*/
+        },
+        //"aaData": [[0,123,322,3,4],[0,1,3332,3,4],[0,2,5,6,2],[0,1,32,3,34],[1,1,321,32,4],[1,1,2,3,4],[1,1,2,3,334],[2,1,323,3,4],[2,113,2,33,34],[3,11,2,3,24],[3,1,22,3,4],[4,1,332,3,4],[4,2,53,63,2],[5,1,2,3,4],[5,1,2331,332,"2222222<br/>222<br/>2222<br/>2222<br/>22222<br/>2222222"],[5,1,32,333,4],[6,1,2,3,34],[6,1,23,3,4],[6,11,2,33,4],[6,11,23,3,24]],
+        //"aoColumnDefs": [
+        //    { "bSortable": false, "aTargets": [ 0 ] }
+        //],
+        "aaSorting": [[ 1, "desc" ]],
+        "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [ 2 ] }
+        ],
+        "aaSorting": [[ 1, "desc" ]],
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "sType": "numeric" },
+            null
+        ]
+    } );
+
+  oTable.fnAddData([[1,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",[1,2,3],3,4],[2,"cbbbbbb",[1,2,3],3,4],[0,"acbb",[1,2,3],6,2]])
+
+  /*
+    var nCloneTh = document.createElement( 'th' );
+    var nCloneTd = document.createElement( 'td' );
+    nCloneTd.innerHTML = '<img src="images/details_open.png">';
+    nCloneTd.className = "center";
+
+    $('#test2 .dataTables_scrollHeadInner thead tr').each( function () {
+        this.insertBefore( nCloneTh, this.childNodes[0] );
+    } );
+     
+    $('#example2 tbody tr').each( function () {
+        this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
+    } );
+*/
+
+    var color = d3.scale.category10();
+
+    $('#example2 tbody tr').each( function (i) {
+      fill = color(parseInt(this.childNodes[0].childNodes[0].data));
+      $(this).css('background-color',fill);
+   
+   	  if (i == 0){
+	      $(this.childNodes[0]).css("border", "5px solid black")
+	      $(this.childNodes[1]).css("border", "5px solid black")
+	      $(this.childNodes[2]).css("border", "5px solid black")
+   	  }
+
+     
+      this.childNodes[0].innerHTML = '<div style="width:20px;height:20px;float:left;background:'+fill+'"></div>';
+      this.childNodes[0].innerHTML += '<div style="width:10px;height:20px;float:left;"></div>';
+      this.childNodes[0].innerHTML += '<img src="images/details_open.png">'
+    } );
+
+    oTable.fnSetColumnVis( 3, false);
+    oTable.fnSetColumnVis( 4, false);
+
+    function fnFormatDetails ( myTable, nTr )
+    {
+      var aData = myTable.fnGetData( nTr );
+      var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px; background:'+color(parseInt(aData[0]))+'; width:100%">';
+      sOut += '<tr><td>Rendering engine:</td><td>'+aData[2][1]+' ### '+aData[3]+'</td></tr>';
+      sOut += '<tr><td>Link to source:</td><td>Could ' + +aData[4]+ 'provide a link here</td></tr>';
+      sOut += '<tr><td>Extra info:</td><td>And '+ aData[5] +' further details here (images etc)</td></tr>';
+      sOut += '</table>';
+       
+      return sOut;
+    }
+    $('#example2 tbody td img').on('click', function () {
+        var nTr = $(this).parents('tr')[0];
+        if ( oTable.fnIsOpen(nTr) )
+        {
+            /* This row is already open - close it */
+            this.src = "images/details_open.png";
+            oTable.fnClose( nTr );
+        }
+        else
+        {
+            /* Open this row */
+            this.src = "images/details_close.png";
+            oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
+        }
+    } );
+
+
+} );
+
+  //$("#test2").hide();
+  </script>
+</html>

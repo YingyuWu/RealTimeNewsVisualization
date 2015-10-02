@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+<html>
+    <head>
+    <script src="lib/d3.v3.js"></script> 
+    <style type="text/css">
+
+    body {
+        margin: 1em;
+    }
+        
+    .node {
+      stroke: #fff;
+      stroke-width: 2px;
+    }
+
+    .link {
+      fill: none;
+      stroke: #f00;
+      opacity: 0.2;
+    }
+    .link.on {
+      stroke: #F00;
+      opacity: .3;
+    }
+
+    .node {
+        stroke: none;
+    }
+
+    </style>>
+    </head>
+    <body>
+      <div id="PlayBarSection">
+      </div>
+    </body>
+    <script src="js/playBar.js"></script>
+    <script type="text/javascript">
+    var current_data = {"messageType":"VIS_Cluster_Data","messageContent":{"clusterData":[{"position":[0.533774,0.192917],"size":66,"id":1,"IsNew":false,"headline":"\"Weighing Choice for Fed, Obama Offers His Party a Defense of Summers\"","keywords":[{"value":"Obama, Barack","occurrence":42.000000},{"value":"United States Politics and Government","occurrence":22.000000},{"value":"Federal Budget (US)","occurrence":16.000000},{"value":"House of Representatives","occurrence":14.000000},{"value":"Republican Party","occurrence":14.000000},{"value":"Patient Protection and Affordable Care Act (2010)","occurrence":14.000000},{"value":"Health Insurance and Managed Care","occurrence":10.000000},{"value":"Senate","occurrence":9.000000},{"value":"Federal Reserve System","occurrence":7.000000},{"value":"Democratic Party","occurrence":7.000000}],"parents":[0,59,0]},{"position":[0.311029,0.537191],"size":57,"id":0,"IsNew":false,"headline":"\"An Anchorless World\"","keywords":[{"value":"Syria","occurrence":57.000000},{"value":"Middle East and North Africa Unrest (2010- )","occurrence":56.000000},{"value":"Obama, Barack","occurrence":53.000000},{"value":"Biological and Chemical Warfare","occurrence":41.000000},{"value":"United States Defense and Military Forces","occurrence":40.000000},{"value":"United States International Relations","occurrence":29.000000},{"value":"Assad, Bashar al-","occurrence":28.000000},{"value":"Russia","occurrence":16.000000},{"value":"Kerry, John","occurrence":15.000000},{"value":"House of Representatives","occurrence":9.000000}],"parents":[57,0,0]},{"position":[0.127337,0.227854],"size":18,"id":3,"IsNew":true,"headline":"\"Dueling Narratives in Iran Over U.S. Relations\"","keywords":[{"value":"Obama, Barack","occurrence":18.000000},{"value":"Rouhani, Hassan","occurrence":17.000000},{"value":"Iran","occurrence":17.000000},{"value":"United States International Relations","occurrence":13.000000},{"value":"Nuclear Weapons","occurrence":12.000000},{"value":"Embargoes and Economic Sanctions","occurrence":6.000000},{"value":"Zarif, Mohammad Javad","occurrence":4.000000},{"value":"United Nations","occurrence":3.000000},{"value":"International Relations","occurrence":3.000000},{"value":"United States","occurrence":3.000000}],"parents":[16,0,0]},{"position":[0.384891,0.275050],"size":13,"id":2,"IsNew":false,"headline":"\"Rodman, Leaving North Korea, Says Prisoner Issue &#8216;Not My Job&#8217; \"","keywords":[{"value":"Obama, Barack","occurrence":13.000000},{"value":"Editorials","occurrence":2.000000},{"value":"Global Warming","occurrence":2.000000},{"value":"Massachusetts","occurrence":1.000000},{"value":"Martha s Vineyard (Mass)","occurrence":1.000000},{"value":"Obama, Michelle","occurrence":1.000000},{"value":"California","occurrence":1.000000},{"value":"Illegal Immigration","occurrence":1.000000},{"value":"Guthrie, Woody","occurrence":1.000000},{"value":"Deportation","occurrence":1.000000}],"parents":[0,0,12]}],"dateTime":[2013,10,4,0,0,0]}};
+    var next_data = {"messageType":"VIS_Cluster_Data","messageContent":{"clusterData":[{"position":[0.311025,0.535414],"size":57,"id":0,"IsNew":false,"headline":"\"An Anchorless World\"","keywords":[{"value":"Syria","occurrence":57.000000},{"value":"Middle East and North Africa Unrest (2010- )","occurrence":56.000000},{"value":"Obama, Barack","occurrence":53.000000},{"value":"Biological and Chemical Warfare","occurrence":41.000000},{"value":"United States Defense and Military Forces","occurrence":40.000000},{"value":"United States International Relations","occurrence":29.000000},{"value":"Assad, Bashar al-","occurrence":28.000000},{"value":"Russia","occurrence":16.000000},{"value":"Kerry, John","occurrence":15.000000},{"value":"House of Representatives","occurrence":9.000000}],"parents":[0,57,0,0]},{"position":[0.596487,0.273102],"size":37,"id":1,"IsNew":false,"headline":"\"Ignoring Qualms, Some Republicans Nurture Dreams of Impeaching Obama\"","keywords":[{"value":"Obama, Barack","occurrence":32.000000},{"value":"United States Politics and Government","occurrence":17.000000},{"value":"Patient Protection and Affordable Care Act (2010)","occurrence":16.000000},{"value":"Federal Budget (US)","occurrence":16.000000},{"value":"House of Representatives","occurrence":14.000000},{"value":"Republican Party","occurrence":14.000000},{"value":"Health Insurance and Managed Care","occurrence":11.000000},{"value":"Senate","occurrence":9.000000},{"value":"Federal Reserve System","occurrence":7.000000},{"value":"Yellen, Janet L","occurrence":6.000000}],"parents":[35,0,0,0]},{"position":[0.130075,0.215114],"size":19,"id":3,"IsNew":false,"headline":"\"From Iranian Ayatollah, Support for U.S. Outreach, but Also Criticism\"","keywords":[{"value":"Obama, Barack","occurrence":19.000000},{"value":"Iran","occurrence":18.000000},{"value":"Rouhani, Hassan","occurrence":18.000000},{"value":"United States International Relations","occurrence":14.000000},{"value":"Nuclear Weapons","occurrence":13.000000},{"value":"Embargoes and Economic Sanctions","occurrence":7.000000},{"value":"Zarif, Mohammad Javad","occurrence":4.000000},{"value":"United Nations","occurrence":4.000000},{"value":"Israel","occurrence":3.000000},{"value":"United States","occurrence":3.000000}],"parents":[0,0,18,0]},{"position":[0.308057,0.032900],"size":17,"id":4,"IsNew":true,"headline":"\"Ickes Returns to Democratic Committee s Rules and Bylaws Panel\"","keywords":[{"value":"Race and Ethnicity","occurrence":3.000000},{"value":"Books and Literature","occurrence":3.000000},{"value":"Television","occurrence":3.000000},{"value":"Men and Boys","occurrence":2.000000},{"value":"Movies","occurrence":2.000000},{"value":"Blacks","occurrence":2.000000},{"value":"Clinton, Hillary Rodham","occurrence":1.000000},{"value":"National Broadcasting Co","occurrence":1.000000},{"value":"Documentary Films and Programs","occurrence":1.000000},{"value":"CNN","occurrence":1.000000}],"parents":[17,0,0,0]},{"position":[0.391870,0.276108],"size":13,"id":2,"IsNew":false,"headline":"\"Rodman, Leaving North Korea, Says Prisoner Issue &#8216;Not My Job&#8217; \"","keywords":[{"value":"Obama, Barack","occurrence":13.000000},{"value":"Editorials","occurrence":2.000000},{"value":"Global Warming","occurrence":2.000000},{"value":"Massachusetts","occurrence":1.000000},{"value":"Martha s Vineyard (Mass)","occurrence":1.000000},{"value":"Obama, Michelle","occurrence":1.000000},{"value":"California","occurrence":1.000000},{"value":"Illegal Immigration","occurrence":1.000000},{"value":"Guthrie, Woody","occurrence":1.000000},{"value":"Deportation","occurrence":1.000000}],"parents":[1,0,0,12]}],"dateTime":[2013,10,6,0,0,0]}};
+
+    generateAndUpdatePlayBar(current_data.messageContent.clusterData, 1000, 240, 100, 0.8, 500, 10);
+    
+    generateAndUpdatePlayBar(next_data.messageContent.clusterData, 1000, 240, 100, 0.8, 500, 10);
+
+    </script>
+</html>

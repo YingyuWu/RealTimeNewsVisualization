@@ -1,0 +1,309 @@
+<meta charset="utf-8">
+<html>
+    <head>
+    <script src="lib/d3.v3.js"></script> 
+    <style type="text/css">
+
+    body {
+        margin: 1em;
+    }
+        
+    .node {
+      stroke: #fff;
+      stroke-width: 2px;
+    }
+
+    .link {
+      fill: none;
+      stroke: #f00;
+      opacity: 0.2;
+    }
+    .link.on {
+      stroke: #F00;
+      opacity: .3;
+    }
+
+    .node {
+        stroke: none;
+    }
+
+    </style>>
+    </head>
+    <body>
+    Test
+    </body>
+    <script type="text/javascript">
+    var current_data = {"messageType":"VIS_Cluster_Data","messageContent":{"clusterData":[{"position":[0.533774,0.192917],"size":66,"id":1,"IsNew":false,"headline":"\"Weighing Choice for Fed, Obama Offers His Party a Defense of Summers\"","keywords":[{"value":"Obama, Barack","occurrence":42.000000},{"value":"United States Politics and Government","occurrence":22.000000},{"value":"Federal Budget (US)","occurrence":16.000000},{"value":"House of Representatives","occurrence":14.000000},{"value":"Republican Party","occurrence":14.000000},{"value":"Patient Protection and Affordable Care Act (2010)","occurrence":14.000000},{"value":"Health Insurance and Managed Care","occurrence":10.000000},{"value":"Senate","occurrence":9.000000},{"value":"Federal Reserve System","occurrence":7.000000},{"value":"Democratic Party","occurrence":7.000000}],"parents":[0,59,0]},{"position":[0.311029,0.537191],"size":57,"id":0,"IsNew":false,"headline":"\"An Anchorless World\"","keywords":[{"value":"Syria","occurrence":57.000000},{"value":"Middle East and North Africa Unrest (2010- )","occurrence":56.000000},{"value":"Obama, Barack","occurrence":53.000000},{"value":"Biological and Chemical Warfare","occurrence":41.000000},{"value":"United States Defense and Military Forces","occurrence":40.000000},{"value":"United States International Relations","occurrence":29.000000},{"value":"Assad, Bashar al-","occurrence":28.000000},{"value":"Russia","occurrence":16.000000},{"value":"Kerry, John","occurrence":15.000000},{"value":"House of Representatives","occurrence":9.000000}],"parents":[57,0,0]},{"position":[0.127337,0.227854],"size":18,"id":3,"IsNew":true,"headline":"\"Dueling Narratives in Iran Over U.S. Relations\"","keywords":[{"value":"Obama, Barack","occurrence":18.000000},{"value":"Rouhani, Hassan","occurrence":17.000000},{"value":"Iran","occurrence":17.000000},{"value":"United States International Relations","occurrence":13.000000},{"value":"Nuclear Weapons","occurrence":12.000000},{"value":"Embargoes and Economic Sanctions","occurrence":6.000000},{"value":"Zarif, Mohammad Javad","occurrence":4.000000},{"value":"United Nations","occurrence":3.000000},{"value":"International Relations","occurrence":3.000000},{"value":"United States","occurrence":3.000000}],"parents":[16,0,0]},{"position":[0.384891,0.275050],"size":13,"id":2,"IsNew":false,"headline":"\"Rodman, Leaving North Korea, Says Prisoner Issue &#8216;Not My Job&#8217; \"","keywords":[{"value":"Obama, Barack","occurrence":13.000000},{"value":"Editorials","occurrence":2.000000},{"value":"Global Warming","occurrence":2.000000},{"value":"Massachusetts","occurrence":1.000000},{"value":"Martha s Vineyard (Mass)","occurrence":1.000000},{"value":"Obama, Michelle","occurrence":1.000000},{"value":"California","occurrence":1.000000},{"value":"Illegal Immigration","occurrence":1.000000},{"value":"Guthrie, Woody","occurrence":1.000000},{"value":"Deportation","occurrence":1.000000}],"parents":[0,0,12]}],"dateTime":[2013,10,4,0,0,0]}};
+    var next_data = {"messageType":"VIS_Cluster_Data","messageContent":{"clusterData":[{"position":[0.311025,0.535414],"size":57,"id":0,"IsNew":false,"headline":"\"An Anchorless World\"","keywords":[{"value":"Syria","occurrence":57.000000},{"value":"Middle East and North Africa Unrest (2010- )","occurrence":56.000000},{"value":"Obama, Barack","occurrence":53.000000},{"value":"Biological and Chemical Warfare","occurrence":41.000000},{"value":"United States Defense and Military Forces","occurrence":40.000000},{"value":"United States International Relations","occurrence":29.000000},{"value":"Assad, Bashar al-","occurrence":28.000000},{"value":"Russia","occurrence":16.000000},{"value":"Kerry, John","occurrence":15.000000},{"value":"House of Representatives","occurrence":9.000000}],"parents":[0,57,0,0]},{"position":[0.596487,0.273102],"size":37,"id":1,"IsNew":false,"headline":"\"Ignoring Qualms, Some Republicans Nurture Dreams of Impeaching Obama\"","keywords":[{"value":"Obama, Barack","occurrence":32.000000},{"value":"United States Politics and Government","occurrence":17.000000},{"value":"Patient Protection and Affordable Care Act (2010)","occurrence":16.000000},{"value":"Federal Budget (US)","occurrence":16.000000},{"value":"House of Representatives","occurrence":14.000000},{"value":"Republican Party","occurrence":14.000000},{"value":"Health Insurance and Managed Care","occurrence":11.000000},{"value":"Senate","occurrence":9.000000},{"value":"Federal Reserve System","occurrence":7.000000},{"value":"Yellen, Janet L","occurrence":6.000000}],"parents":[35,0,0,0]},{"position":[0.130075,0.215114],"size":19,"id":3,"IsNew":false,"headline":"\"From Iranian Ayatollah, Support for U.S. Outreach, but Also Criticism\"","keywords":[{"value":"Obama, Barack","occurrence":19.000000},{"value":"Iran","occurrence":18.000000},{"value":"Rouhani, Hassan","occurrence":18.000000},{"value":"United States International Relations","occurrence":14.000000},{"value":"Nuclear Weapons","occurrence":13.000000},{"value":"Embargoes and Economic Sanctions","occurrence":7.000000},{"value":"Zarif, Mohammad Javad","occurrence":4.000000},{"value":"United Nations","occurrence":4.000000},{"value":"Israel","occurrence":3.000000},{"value":"United States","occurrence":3.000000}],"parents":[0,0,18,0]},{"position":[0.308057,0.032900],"size":17,"id":4,"IsNew":true,"headline":"\"Ickes Returns to Democratic Committee s Rules and Bylaws Panel\"","keywords":[{"value":"Race and Ethnicity","occurrence":3.000000},{"value":"Books and Literature","occurrence":3.000000},{"value":"Television","occurrence":3.000000},{"value":"Men and Boys","occurrence":2.000000},{"value":"Movies","occurrence":2.000000},{"value":"Blacks","occurrence":2.000000},{"value":"Clinton, Hillary Rodham","occurrence":1.000000},{"value":"National Broadcasting Co","occurrence":1.000000},{"value":"Documentary Films and Programs","occurrence":1.000000},{"value":"CNN","occurrence":1.000000}],"parents":[17,0,0,0]},{"position":[0.391870,0.276108],"size":13,"id":2,"IsNew":false,"headline":"\"Rodman, Leaving North Korea, Says Prisoner Issue &#8216;Not My Job&#8217; \"","keywords":[{"value":"Obama, Barack","occurrence":13.000000},{"value":"Editorials","occurrence":2.000000},{"value":"Global Warming","occurrence":2.000000},{"value":"Massachusetts","occurrence":1.000000},{"value":"Martha s Vineyard (Mass)","occurrence":1.000000},{"value":"Obama, Michelle","occurrence":1.000000},{"value":"California","occurrence":1.000000},{"value":"Illegal Immigration","occurrence":1.000000},{"value":"Guthrie, Woody","occurrence":1.000000},{"value":"Deportation","occurrence":1.000000}],"parents":[1,0,0,12]}],"dateTime":[2013,10,6,0,0,0]}};
+
+	function play_bar_data(w, h, padding, gapRatio){
+	    this.history = [];
+	    this.w = w; // gap width
+	    this.h = h;	// svg height;
+	    this.gapRatio = gapRatio;
+	    this.padding = padding;
+
+	    this.addNextNodes = function (node_list) {
+	    	var last = this.history.length;
+	    	var maxn = node_list.nodes.length;
+	    	var maxv = node_list.amount;
+
+	        var y = d3.scale.linear()
+			    .domain([0, maxv])
+			    .range([0, this.h - this.padding * maxn]);
+
+			var cumValue = 0;
+
+			node_list.y = y;
+
+			// calculate offset for node;
+    		node_list.nodes.forEach(function(n, i) {
+	            n.order = i;
+	            n.offsets = y(cumValue);
+	            n.height = y(n.value);
+	            n.width = this.w * (1-this.gapRatio)
+	            cumValue += n.value;	           
+	        }, this)
+
+
+    		// create links then attach lins, eventually calculate offset for links.
+	    	if (last == 0){ 
+	    		// First time, only nodes, no links need to do.
+	    	}
+	    	else{ // create Links to previous history
+	    		var previous_history = this.history[last-1];
+
+	    		// create and attach links;
+	    		node_list.nodes.forEach(function(n, i) {
+	    			n.parents.forEach(function(l, j){
+	    				if (l!=0){
+	    					var newLink = new link(j, i, l);
+	    					n.incomingLink.push(newLink);
+	    					previous_history.nodes[j].outgoingLink.push(newLink);
+	    				}
+	    			}, this);
+	    		}, this);
+
+	    		// calculate offset for links
+				previous_history.nodes.forEach(function(n, i) {
+		            var lCumValue;
+		            var y = previous_history.y;
+		            // outgoing
+		            if (n.outgoingLink) {
+		                lCumValue = 0;
+		                n.outgoingLink.sort(function(a,b) {
+		                    return d3.descending(b.target, a.target)
+		                });
+		                n.outgoingLink.forEach(function(l) {
+		                    l.outOffsets = y(lCumValue);
+		                    l.outHeight = y(l.value);
+		                    lCumValue += l.value;
+		                });
+		            }
+	            }, this);
+
+	    		
+	    		node_list.nodes.forEach(function(n, i) {
+		            var lCumValue;
+		            var y = node_list.y;
+		            // incoming
+		            if (n.incomingLink) {
+		                lCumValue = 0;
+		                n.incomingLink.sort(function(a,b) {
+		                    return d3.descending(b.source, a.source)
+		                });
+		                n.incomingLink.forEach(function(l) {
+		                    l.inOffsets = y(lCumValue);
+		                    l.inHeight = y(l.value);
+		                    lCumValue += l.value;
+		                });
+	                }
+	            }, this);
+	    	}
+
+
+
+	        this.history.push(node_list);
+	    };
+	}
+
+	function link (source, target, size){
+		this.source = source;
+		this.target = target;
+		this.value = size;
+
+		this.inOffsets = 0;
+		this.inHeight = 0;
+		this.outOffsets = 0;
+		this.outHeight = 0;
+	}
+
+
+	function BarNode_list (tempdata){
+		this.nodes = [];
+		this.amount = 0;
+
+		tempdata.forEach(function(node, i) {
+			var newNode = new BarNode(node, i);
+			this.nodes.push(newNode);
+			this.amount += newNode.value;
+		}, this);
+	}
+
+	function BarNode (tempdata, i){
+		this.id = tempdata.id;
+		this.incomingLink = [];
+		this.outgoingLink = [];
+		this.IsNew = tempdata.IsNew;
+		this.order = i;
+		this.value = tempdata.size;
+		this.offsets = 0;
+		this.height = 0;
+		this.width = 0;
+		this.nodeName = tempdata.headline;
+		this.parents = tempdata.parents;
+	}
+
+    /* Make Vis */
+        
+    // settings and scales
+    var w = 1000,
+        h = 240,
+        gapWidth = 100,
+        gapRatio = 0.8;
+        delay = 1000,
+        padding = 10,
+        line = d3.svg.line()
+            .interpolate('basis');
+            
+    // root
+    var vis = d3.select("body")
+      .append("svg:svg")
+        .attr("width", w)
+        .attr("height", h);
+        
+        
+    function update() {
+        // update data
+        var last = history_list.history.length;
+        var translate_x = 0;
+        if (last == 0){
+        	return;
+        }  
+        else if (last == 1){
+        	translate_x = 10;
+        	var currentHistory = history_list.history[0];
+        	var times = vis.append("svg:g")
+        					.attr('class', 'time')
+        					.attr("transform", function(d, i) { return "translate(" + translate_x + ",0)" });
+
+        	var nodes = times.selectAll('g.node')
+	            .data(currentHistory.nodes)
+	          .enter().append('svg:g')
+	            .attr('class', 'node');
+
+	        nodes.append('svg:rect')
+	                .attr('fill', 'steelblue')
+	                .attr('y', function(n, i) {
+	                    return n.offsets + i * padding;
+	                })
+	                .attr('width', function(n) { return n.width })
+	                .attr('height', function(n) { return n.height })
+	              .append('svg:title')
+	                .text(function(n) { return n.id });
+        }
+        else{
+        	translate_x = 10 + gapWidth*(1-gapRatio) + (last-2)*gapWidth;
+        	var currentHistory = history_list.history[last-1];
+        	var previousHistory = history_list.history[last-2];
+        	 // time slots
+        	var times = vis.append("svg:g")
+        					.attr('class', 'time')
+        					.attr("transform", function(d, i) { return "translate(" + translate_x + ",0)" });
+	            
+	        // node bars
+        	var nodes = times.selectAll('g.node')
+	            .data(currentHistory.nodes)
+	          .enter().append('svg:g')
+	            .attr('class', 'node');
+	        
+	        setTimeout(function() {
+	            nodes.append('svg:rect')
+	                .attr('fill', 'steelblue')
+	                .attr('y', function(n, i) {
+	                    return n.offsets + i * padding;
+	                })
+	                .attr('x', gapWidth*gapRatio)
+	                .attr('width', function(n) { return n.width })
+	                .attr('height', function(n) { return n.height })
+	              .append('svg:title')
+	                .text(function(n) { return n.id });
+	        }, delay);
+	            
+	        var linkLine = function(start) {
+		            return function(l) {
+		                var source = previousHistory.nodes[l.source],
+		                    target = currentHistory.nodes[l.target],
+		                    bandWidth = gapRatio * gapWidth,
+		                    startx = 0,
+		                    endx = bandWidth,
+		                    sourcey = source.offsets + 
+		                        source.order * padding +
+		                        l.outOffsets +
+		                        l.outHeight/2,
+		                    targety = target.offsets + 
+		                        target.order * padding + 
+		                        l.inOffsets +
+		                        l.inHeight/2,
+
+		                    //start = true;
+		                    points = start ? 
+		                        [
+		                            [ startx, sourcey ], [ startx, sourcey ], [ startx, sourcey ], [ startx, sourcey ] 
+		                        ] :
+		                        [
+		                            [ startx, sourcey ],
+		                            [ startx + bandWidth/4, sourcey ],
+		                            [ startx + 3*bandWidth/4, targety ],
+		                            [ endx, targety ]
+		                        ];
+
+		                    result = line(points);
+		                return line(points);
+		            }
+		        }
+	            
+	        // links
+	        var links = nodes.selectAll('path.link')
+	            .data(function(n) { return n.incomingLink || [] })
+	          .enter().append('svg:path')
+	            .attr('class', 'link')
+	            .style('stroke-width', function(l) { 
+	            	return l.inHeight })
+	            .attr('d', linkLine(true))
+	            .on('mouseover', function() {
+	                d3.select(this).attr('class', 'link on')
+	            })
+	            .on('mouseout', function() {
+	                d3.select(this).attr('class', 'link')
+	            })
+	          .transition()
+	            .duration(delay)
+	            .attr('d', linkLine());
+        }          
+    }
+
+	var history_list = new play_bar_data(gapWidth, h, padding, gapRatio)
+
+	var current_Nodes = new BarNode_list(current_data.messageContent.clusterData);
+	history_list.addNextNodes(current_Nodes);
+
+	update();
+
+	var next_Nodes = new BarNode_list(next_data.messageContent.clusterData)
+	history_list.addNextNodes(next_Nodes);
+
+	update();
+
+    </script>
+</html>

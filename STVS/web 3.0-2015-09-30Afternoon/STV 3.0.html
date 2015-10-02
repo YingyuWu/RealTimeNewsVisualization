@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<title>Story Telling Visualization Test</title>
+		<link rel="stylesheet" type="text/css" href="css/myCSS.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="css/clusterText.css">
+		<link rel="stylesheet" type="text/css" href="css/baraxis.css">
+		<link rel="stylesheet" type="text/css" href="css/piechart.css">
+		<script src="lib/d3.v3.js"></script>
+		<script src="lib/jquery-2.0.3.min.js"></script>
+		<script src="lib/jquery.dataTables.min.js"></script>
+		<script src="lib/bootstrap.js"></script>
+
+
+	</head>
+
+	<body>
+	<div id="myBody">
+		<h1 id="Titles_1">STV Web Visualization <small>beta version 2.1</small></h1>
+		
+		<div id="ControlPanelSection" class="btn-group">
+			<button type="button" class="btn btn-primary" id="websocket_status" style="max-width:200px; min-width:200px" disabled>
+			Connection Status : UnKnown
+			</button>	
+			<button type="button" class="btn btn-primary" id="date_time" style="max-width:200px; min-width:200px"disabled>
+			Date
+			</button>	
+
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-primary" id="playback">
+			    <input type="radio">
+			    	<img border="0" src="images/playback.jpg" width="30" onclick="goBackOneTimestamp()"/>
+			   </label>
+			  <label class="btn btn-primary" id="play">
+			    <input type="radio">
+			    <img border="0" src="images/play.jpg" name="pausing" width="20" onclick="playOnClick()"/>
+			  </label>
+			  <label class="btn btn-primary" id="playforward">
+			    <input type="radio">
+			    <img border="0" src="images/FF.jpg" width="30" onclick="goAheadOneTimestamp()">
+			  </label>
+			</div>
+
+			<div class="btn-group" data-toggle="buttons-radio">
+			  <!--<button type="button" class="btn btn-primary active" id="f-title" data-toggle="button" onclick="changeTitleF()">Frequence</button>
+			  <button type="button" class="btn btn-primary" id="p-title" data-toggle="button" onclick="changeTitleP()">PageRank</button>
+			  <button type="button" class="btn btn-primary" id="g-title" data-toggle="button" onclick="changeTitleG()">Newest</button>
+			  </div>-->
+			  <!--<p class="btn btn-primary">City:</p>-->
+			  <select class="btn btn-primary"style="height:38px">
+			  <option value="Austin" selected>Austin</option>
+			  <option value="Charlotte">Charlotte</option>
+			  <option value="Chicago">Chicago</option>
+			  <option value="Columbus">Columbus</option>
+			  <option value="Dallas">Dallas</option>
+			  <option value="Columbus">Detroit</option>
+			  <option value="Detroit">Columbus</option>
+			  <option value="EIPaso">EIPaso</option>
+			  <option value="FortWorth">FortWorth</option>
+			  <option value="Houston">Houston</option>
+			  <option value="Indianapolis">Indianapolis</option>
+			  <option value="Jacisonville">Jacisonville</option>
+			  <option value="LosAngeles">LosAngeles</option>
+			  <option value="NewYork">NewYork</option>
+			  <option value="Philadelphia">Philadelphia</option>
+			  <option value="Phoenix">Phoenix</option>
+			  <option value="SanAntonio">SanAntonio</option>
+			  <option value="SanDiego">SanDiego</option>
+			  <option value="SanFrancisco">SanFrancisco</option>
+			  <option value="SanJose">SanJose</option>
+			  <option value="Seatlle">Seattle</option>
+			</select>
+
+
+			<!--Time Unit:-->
+			  <select class="btn btn-primary"style="height:38px">
+			  <option value="2 weeks" selected>2 weeks</option>
+			  <option value="1 day">1 day</option>
+			  <option value="2 days">2 days</option>
+			  <option value="4 days">4 days</option>
+			  <option value="1 week">1 week</option>
+			  <option value="1 month">1 month</option>
+			</select>
+
+			<!--Time Range-->
+			<select class="btn btn-primary" style="height:38px">
+			  <option value="2004" selected>2004</option>
+			  <option value="1 day">1995</option>
+			  <option value="2 days">1996</option>
+			  <option value="4 days">1997</option>
+			  <option value="1 week">1998</option>
+			  <option value="1 month">1999</option>
+			  <option value="1 month">2000</option>
+			  <option value="1 month">2001</option>
+			  <option value="1 month">2002</option>
+			  <option value="1 month">2003</option>
+			</select>
+			
+			</div>
+			<!--
+			<label class="btn btn-primary" style="height:38px">
+			<input id="cluster_parameter"type="range" min=1 max=90 value=40 step=2 style="width:130px;" onchange="clusterParameterChange()">
+			</label>
+			<label class="btn btn-primary" style="height:38px">
+			<input id="cluster_size_parameter"type="range" min=1 max=20 value=10 step=1 style="width:60px;" onchange="clusterSizeParameterChange()">
+			</label>
+			-->	
+		</div>
+		
+		<div id="visualizationArea">
+			<div id="ClusterVisualizationSection">
+			</div>
+
+
+			<div id="moveLeft" style="display: table;float:left;width:24px;height:240px">
+				  <div style=" #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+				    <div style=" #position: relative; #top: -50%">
+				     <h1><</h1>
+				    </div>
+				  </div>
+			</div>
+			<div id="PlayBarSection" style="float:left;">
+			</div>
+			<div id="moveRight" style="display: table;width:24px;height:240px;float:left;">
+				  <div style=" #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+				    <div style=" #position: relative; #top: -50%">
+				      <h1>></h1>
+				    </div>
+				  </div>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script src="js/titleSelection.js"></script>
+	<script src="js/clusterFocus.js"></script>
+	<script src="js/newClusterHighlight.js"></script>
+	<script src="js/playControl.js"></script>
+	<script src="js/storyTellingVisualization.js"></script>
+	<script src="js/mainStage.js"></script>
+	<script src="js/forceNodes.js"></script>
+	<script src="js/playBar.js"></script>
+	<script src="js/messageProcessing.js"></script>
+	<script src="js/main.js"></script>
+	
+	<script src = "js/d3.layout.cloud.js"></script>
+	<script src="js/keywordlist.js"></script>
+	<script src="js/barchart.js"></script>
+	<script src="js/piechart.js"></script>
+	<script type="text/javascript">
+
+	initWebsocket();
+
+	</script>	
+</html>

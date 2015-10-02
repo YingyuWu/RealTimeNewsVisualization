@@ -1,0 +1,33 @@
+.keywordText {
+	fill: white;
+	font-weight: bold; 
+	font-size: 16px;
+	font-family: Verdana;
+}
+
+.titleText {
+	
+	font-weight: bold;
+	font-size: 13px;
+	font-family: Lucida Console;
+}
+
+.newInsertText {
+	fill: black;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Verdana;
+}
+
+.freshText {
+	fill: white;
+	font-weight: bold;
+	font-size: 13px;
+	font-family: Verdana;
+}
+
+.pieChartText {
+	fill: #33334B;
+	font-weight: bold;
+	font-size: 10px;
+}

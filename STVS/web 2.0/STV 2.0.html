@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<title>Story Telling Visualization Test</title>
+		<link rel="stylesheet" type="text/css" href="css/myCSS.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<script src="lib/d3.v3.js"></script>
+		<script src="lib/jquery-2.0.3.min.js"></script>
+		<script src="lib/jquery.dataTables.min.js"></script>
+		<script src="lib/bootstrap.js"></script>
+
+	</head>
+
+	<body>
+	<div id="myBody">
+		<h1 id="Titles_1">STV Web Visualization <small>beta version 2.1</small></h1>
+		
+		<div id="ControlPanelSection" class="btn-group">
+			<button type="button" class="btn btn-primary" id="websocket_status" disabled>
+			Connection Status : UNKNOWN
+			</button>	
+			<button type="button" class="btn btn-primary" id="date_time" width="300"disabled>
+			Current Date : UnKnown
+			</button>	
+
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-primary" id="playback">
+			    <input type="radio">
+			    	<img border="0" src="images/playback.jpg" width="30" onclick="goBackOneTimestamp()"/>
+			   </label>
+			  <label class="btn btn-primary" id="play">
+			    <input type="radio">
+			    <img border="0" src="images/play.jpg" name="pausing" width="20" onclick="playOnClick()"/>
+			  </label>
+			  <label class="btn btn-primary" id="playforward">
+			    <input type="radio">
+			    <img border="0" src="images/FF.jpg" width="30" onclick="goAheadOneTimestamp()">
+			  </label>
+			</div>
+
+			<div class="btn-group" data-toggle="buttons-radio">
+			  <button type="button" class="btn btn-primary active" id="f-title" data-toggle="button" onclick="changeTitleF()">Frequence</button>
+			  <button type="button" class="btn btn-primary" id="p-title" data-toggle="button" onclick="changeTitleP()">PageRank</button>
+			  <button type="button" class="btn btn-primary" id="g-title" data-toggle="button" onclick="changeTitleG()">Newest</button>
+			</div>
+
+			<label class="btn btn-primary" style="height:38px">
+			<input id="cluster_parameter"type="range" min=1 max=90 value=60 step=2 style="width:130px;" onchange="clusterParameterChange()">
+			</label>
+			<label class="btn btn-primary" style="height:38px">
+			<input id="cluster_size_parameter"type="range" min=4 max=10 value=7 step=1 style="width:60px;" onchange="clusterSizeParameterChange()">
+			</label>
+				
+		</div>
+		
+		<div id="visualizationArea">
+			<div id="ClusterDetailSection">
+				<div id="articleDetailDataTableDiv" width="100%">
+					<table id="articleDetailDataTable" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+						<thead>
+							<tr>
+								<th width="10%"></th>
+								<th width="10%">PubDate</th>
+								<th width="80%">Title</th>
+								<th width="0%">Keywords</th>							
+								<th width="0%">1stParagraph</th>
+
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="focusClusterDataTableDiv" width="100%">
+					<table id="focusClusterDataTable" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+						<thead>
+							<tr>
+								<th width="10%"></th>
+								<th width="10%">PubDate</th>
+								<th width="80%">Title</th>
+								<th width="0%">Keywords</th>
+								<th width="0%">1stParagraph	</th>
+
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+
+			<div id="ClusterVisualizationSection">
+			</div>
+
+
+			<div id="moveLeft" style="display: table;float:left;width:24px;height:240px">
+				  <div style=" #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+				    <div style=" #position: relative; #top: -50%">
+				     <h1><</h1>
+				    </div>
+				  </div>
+			</div>
+			<div id="PlayBarSection" style="float:left;">
+			</div>
+			<div id="moveRight" style="display: table;width:24px;height:240px;float:left;">
+				  <div style=" #position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+				    <div style=" #position: relative; #top: -50%">
+				      <h1>></h1>
+				    </div>
+				  </div>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script src="js/titleSelection.js"></script>
+	<script src="js/clusterFocus.js"></script>
+	<script src="js/newClusterHighlight.js"></script>
+	<script src="js/clusterDetail_DataTable.js"></script>
+	<script src="js/playControl.js"></script>
+	<script src="js/storyTellingVisualization.js"></script>
+	<script src="js/forceNodes.js"></script>
+	<script src="js/playBar.js"></script>
+	<script src="js/messageProcessing.js"></script>
+
+	<script src="js/main.js"></script>
+	<script type="text/javascript">
+
+	initDataTable();
+	initWebsocket();
+
+	</script>	
+</html>

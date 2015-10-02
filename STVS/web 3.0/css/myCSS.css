@@ -1,0 +1,131 @@
+svg {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+body{
+	font-family: "Georgia";
+}
+
+div#myBody{
+	margin-left:50px;
+    margin-right:50px;
+}
+
+div#visualizationArea{
+	
+	height: 800px;
+	width: 1200px;
+	margin: 0; 
+	padding: 0;
+}
+
+div#ClusterVisualizationSection{
+	background-color: #f1ffff;
+	height: 70%;
+	width: 100%;
+}
+
+div#ClusterDetailSection{
+	background-color: #fffff1;
+	height: 70%;
+	width: 30%;
+	float : right;
+}
+
+div#PlayBarSection{
+	background-color: #f1f1ff;
+	height: 30%;
+	width: 96%;
+}
+
+div#moveLeft{
+	background-color:#b3cde3;
+}
+
+div#moveRight{
+	background-color:#b3cde3;
+}
+
+div#moveLeft h1{
+	color: steelblue;
+}
+
+div#moveRight h1{
+	color: steelblue;
+}
+
+button#date_time{
+	min-width: 300px;
+	max-width: 300px;
+}
+
+button#websocket_status{
+	min-width: 250px;
+	max-width: 250px;
+}
+
+.node {
+      
+      stroke-width: 1px;
+}
+
+.link {
+  opacity: 0.3;
+}
+.link.on {
+  
+  opacity: 0.5;
+}
+
+.node {
+    /*stroke: none;*/
+}
+
+.cluster_circle{
+    z-index:10;
+}
+#PlayBarSection text{
+	//text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+td.sorting_1
+{
+	opacity: 0.9;
+}
+
+#ClusterVisualizationSection text
+{
+	//text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    //         0px 8px 13px rgba(0,0,0,0.1),
+    //         0px 18px 23px rgba(0,0,0,0.1);
+/*text-shadow: 0 1px 0 #ccc, 
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);*/
+}
+.children_cluster{
+  fill-opacity:1;
+}
+.leaf_cluster{
+  fill-opacity: 0.7;
+}
+
+.timeline path,
+.timeline line {
+	fill : none;
+	stroke: #000;
+	shape-rendering : crispEdges;
+}
